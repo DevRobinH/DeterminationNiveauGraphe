@@ -59,4 +59,11 @@ public class Graphe {
 				this.matriceAdjacence = matrice;
 	}
 
+	/**
+	 * Lecture de la matrice d'ajence et traduction en liste de sommet avec leur arêtes
+	 */
+	private void initListeSommet () {
+
+	}
+
 }
