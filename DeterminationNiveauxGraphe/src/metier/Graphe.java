@@ -4,6 +4,8 @@
  */
 package metier;
 
+import java.util.List;
+
 /**
  * Représentation de graphe orienté
  * Implémentation de la fonctionnalité permettant de determiner
@@ -19,6 +21,9 @@ public class Graphe {
 	/** Matrice d'adjacence du graphe*/
 	private int matriceAdjacence[][];
 
+	/** Liste des sommets du graphe */
+	private List<Sommet> listeSommet;
+
 	/**
 	 * Implémentation d'un graphe en ne définissant que son nombre de soomet
 	 * Les arêtes ne sont pas définis
@@ -33,6 +38,8 @@ public class Graphe {
 		this.sommet = nbSommet;
 
 		this.matriceAdjacence = new int[nbSommet][nbSommet];
+
+		this.listeSommet = null;
 
 	}
 
