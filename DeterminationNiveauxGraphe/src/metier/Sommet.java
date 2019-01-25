@@ -32,8 +32,8 @@ public class Sommet {
 	 */
 	public Sommet (String identifiant) {
 		this.id = identifiant;
-		successeurs = new ArrayList<>();
-		predecesseurs = new ArrayList<>();
+		this.successeurs = new ArrayList<>();
+		this.predecesseurs = new ArrayList<>();
 
 	}
 
@@ -45,8 +45,8 @@ public class Sommet {
 	 */
 	public Sommet (String identifiant,List<Sommet> successeurs,List<Sommet> predecesseurs  ) {
 		this.id = identifiant;
-		successeurs = successeurs;
-		predecesseurs = predecesseurs;
+		this.successeurs = successeurs;
+		this.predecesseurs = predecesseurs;
 
 	}
 
