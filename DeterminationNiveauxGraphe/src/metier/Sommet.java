@@ -25,6 +25,9 @@ public class Sommet {
 	/** Liste des prédécesseurs du sommet */
 	private List<Sommet> predecesseurs;
 
+	/** Attribut utilisé dans l'algorithme de determination de niveau,
+	 *  à false lors de l'initialisation */
+	private boolean marque;
 
 	/**
 	 * Création d'un sommet
@@ -34,6 +37,7 @@ public class Sommet {
 		this.id = identifiant;
 		this.successeurs = new ArrayList<>();
 		this.predecesseurs = new ArrayList<>();
+		this.marque = false;
 
 	}
 
@@ -47,6 +51,7 @@ public class Sommet {
 		this.id = identifiant;
 		this.successeurs = successeurs;
 		this.predecesseurs = predecesseurs;
+		this.marque = false;
 
 	}
 
@@ -81,11 +86,11 @@ public class Sommet {
 	 * @param successeur
 	 */
 	public void removeSuccesseur (Sommet successeur) {
-		// On verifie que le sommet à supprimer n'est pas existant dans la liste
-		if (!(this.predecesseurs.contains(successeur))) {
-			throw new IllegalArgumentException("Sommet n'est pas dans la liste");
+		// On verifie que le sommet à supprimer est dans  la liste
+		if ((this.successeurs.contains(successeur))) {
+			this.successeurs.remove(successeur);
 		}
-		this.successeurs.remove(successeur);
+
 	}
 
 	/**
@@ -93,11 +98,10 @@ public class Sommet {
 	 * @param sucesseur
 	 */
 	public void removePredecesseur (Sommet predecesseur) {
-		// On verifie que le sommet à supprimer n'est pas existant dans la liste
-		if (!(this.predecesseurs.contains(predecesseur))) {
-			throw new IllegalArgumentException("Sommet n'est pas dans la liste");
+		// On verifie que le sommet à supprimer est dans  la liste
+		if ((this.predecesseurs.contains(predecesseur))) {
+			this.predecesseurs.remove(predecesseur);
 		}
-		this.predecesseurs.remove(predecesseur);
 	}
 
 	/**
@@ -142,8 +146,19 @@ public class Sommet {
 		this.predecesseurs = predecesseurs;
 	}
 
+	/**
+	 * @return the marque
+	 */
+	public boolean isMarque() {
+		return marque;
+	}
 
-
+	/**
+	 * @param marque the marque to set
+	 */
+	public void setMarque(boolean marque) {
+		this.marque = marque;
+	}
 
 
 }

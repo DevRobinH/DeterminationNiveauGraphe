@@ -63,7 +63,10 @@ public class TestGraphe {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		testCreationGraphe();
+		//testCreationGraphe();
+		Graphe grapheTest = new Graphe(MATRICE_TEST2.length,MATRICE_TEST2);
+		grapheTest.determinationNiveau();
+
 	}
 
 }
