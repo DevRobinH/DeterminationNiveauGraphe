@@ -97,6 +97,16 @@ public class Graphe {
 
 
 	/**
+	 * Détermination des différents niveaux d'un graphe orientée
+	 */
+	public void determinationNiveau () {
+		// Accéder à la liste de sommet
+		// Affiche les sommets sans prédécesseurs
+		// Pour chaque sommet supprimer les sommets précedents de sa liste de successeurs et de predecesseurs
+	}
+
+
+	/**
 	 * @return the sommet
 	 */
 	public int getSommet() {

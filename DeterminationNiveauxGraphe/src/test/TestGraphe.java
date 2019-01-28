@@ -31,28 +31,39 @@ public class TestGraphe {
 
 
 	/**
-	 * @param args
+	 * Test de la crésation d'un graphe via le constructeur à 2 paramètres
+	 * Test de la méthode initListeSommet permmetant la tradcution
+	 * de la matrice d'adjacence en liste de sommet
 	 */
-	public static void main(String[] args) {
-
-
+	public static void testCreationGraphe() {
 		Graphe grapheTest = new Graphe(MATRICE_TEST1.length,MATRICE_TEST1);
 
-        for(int i = 0; grapheTest.getListeSommet().size() < i; i++) {
+		// On boucle sur chaque sommet du graphe
+        for(int i = 0; i < grapheTest.getListeSommet().size(); i++) {
 
-        	System.out.println("Sommet " + grapheTest.getListeSommet().get(i) + " :");
-        	System.out.println(" Liste de ses prédecesseurs : ");
+        	System.out.print("\nSommet " + grapheTest.getListeSommet().get(i).getId() + " :");
+        	System.out.print("\nListe de ses prédecesseurs : ");
 
-        	for (int j = 0; grapheTest.getListeSommet().get(i).getPredecesseurs().size() < j; j++) {
+        	// Affichage des prédecesseurs du sommet courant
+        	for (int j = 0; j <  grapheTest.getListeSommet().get(i).getPredecesseurs().size(); j++) {
         		System.out.print(grapheTest.getListeSommet().get(i).getPredecesseurs().get(j).getId() + ", ");
         	}
 
-        	System.out.println(" Liste de ses sucesseurs : ");
+        	System.out.print("\nListe de ses sucesseurs : ");
 
-        	for (int j = 0; grapheTest.getListeSommet().get(i).getSuccesseurs().size() < j; j++) {
+        	// Affichage des successeurs du sommet courant
+        	for (int j = 0; j < grapheTest.getListeSommet().get(i).getSuccesseurs().size(); j++) {
         		System.out.print(grapheTest.getListeSommet().get(i).getSuccesseurs().get(j).getId() + ", ");
         	}
         }
+	}
+
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		testCreationGraphe();
 	}
 
 }
