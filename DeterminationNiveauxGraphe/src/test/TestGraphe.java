@@ -67,6 +67,7 @@ public class TestGraphe {
 		Graphe grapheTest = new Graphe(MATRICE_TEST2.length,MATRICE_TEST2);
 		grapheTest.determinationNiveau();
 
+
 	}
 
 }

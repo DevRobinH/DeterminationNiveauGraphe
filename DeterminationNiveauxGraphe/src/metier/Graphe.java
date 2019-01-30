@@ -100,52 +100,53 @@ public class Graphe {
 	 * Détermination des différents niveaux d'un graphe orientée
 	 */
 	public void determinationNiveau () {
-		// Supprimer les sommets sans predecesseurs de la liste
-		int j = 0;
-		// On exécute l'algo tant qu'il y a des sommet dans la liste
-		while (!(this.listeSommet.isEmpty())) {
-			int i = 0;
-			// System.out.println(i);
-			// Accéder à la liste de sommet
-			for( ; i < listeSommet.size(); i++) {
-				// Affiche les sommets sans prédécesseurs
-				if (listeSommet.get(i).getPredecesseurs().isEmpty()) {
-					System.out.println("Niveau " +  j + " : " + listeSommet.get(i).getId());
-					// on marque le sommet
-					listeSommet.get(i).setMarque(true);
-				}
-			}
-			// Accéder à la liste de sommet
-			for( ; i < listeSommet.size(); i++) {
-				// Pour tout les sommets on va supprimer des liste de successeurs et de predecessuers les sommets marqués
-				if(listeSommet.get(i).isMarque()) {
+		//niveau du graphe
+		int niveau = 0;
+		// liste de sommet marqués
+		ArrayList<Sommet> listeMarques =  new ArrayList<Sommet>();
 
-				}
+		// Marquage des sommets sans prédecesseurs
+		listeMarques =  marquageSommet(niveau);
+
+		// Pour chaque sommet marqué
+		for(int i = 0; i < listeMarques.size(); i++) {
+			// On va le supprimer de la liste des prédecesseurs et successeur de chaque sommet
+			// (s'il y sont présent)
+
+			for (int j = 0; j < this.listeSommet.size(); j++) {
+				listeSommet.get(j).removePredecesseur(listeMarques.get(i));
+				listeSommet.get(j).removeSuccesseur(listeMarques.get(i));
+				System.out.println(listeSommet.get(j).toString());
 			}
 
-			for (int k = 0 ; k < listeSommet.get(k).getPredecesseurs().size(); k++  ) {
-
-				if(listeSommet.get(k).getPredecesseurs().contains(listeSommet.get(i))) {
-					System.out.println("je supprimme le sommet " + listeSommet.get(i).getId() );
-					listeSommet.get(k).removePredecesseur(listeSommet.get(i));
-				}
-
-				if(listeSommet.get(k).getSuccesseurs().contains(listeSommet.get(i))) {
-					System.out.println("je supprimme le sommet " + listeSommet.get(i).getId() );
-					listeSommet.get(k).removeSuccesseur(listeSommet.get(i));
-				}
-
-				if (listeSommet.get(i).getPredecesseurs().isEmpty()) {
-					System.out.println("je supprimme le sommet de la liste de sommet " + listeSommet.get(i).getId() );
-					listeSommet.remove(listeSommet.get(i));
-				}
-
-				j++;
-			}
 		}
+
+		// pour chaque sommet on va supprimer le ou les sommets marqués de leurs liste
+		//de prédeccesseurs ou sucesseur
 
 	}
 
+
+	/**
+	 * Marquage des sommet ne possédant pas de prédecesseurs
+	 * @param niveau niveau de décomposition du graphe
+	 * @return liste de sommet marqué
+	 */
+	private ArrayList<Sommet> marquageSommet(int niveau) {
+		ArrayList<Sommet> marques = new ArrayList<Sommet>();
+		// Accéder à la liste de sommet
+		for(int i = 0; i < listeSommet.size(); i++) {
+			// Affiche les sommets sans prédécesseurs
+			if (listeSommet.get(i).getPredecesseurs().isEmpty()) {
+				System.out.println("Niveau " +  niveau + " : " + listeSommet.get(i).getId());
+				// on marque le sommet
+				listeSommet.get(i).setMarque(true);
+				// insertion du sommet marqué à la liste
+				marques.add(listeSommet.get(i));
+			}
+		}
+		return marques;
+	}
 	/**
 	 * @return the sommet
 	 */

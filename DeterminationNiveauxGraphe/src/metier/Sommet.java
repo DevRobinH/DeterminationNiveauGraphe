@@ -61,11 +61,9 @@ public class Sommet {
 	 */
 	public void addSuccesseur (Sommet successeur) {
 		// On verifie que le sommet à ajouter ne fait pas déjà partie de la liste
-		if (this.successeurs.contains(successeur)) {
-			throw new IllegalArgumentException("Sommet déjà contenu dans la liste");
+		if ((!this.successeurs.contains(successeur))) {
+			this.successeurs.add(successeur);
 		}
-
-		this.successeurs.add(successeur);
 	}
 
 	/**
@@ -74,11 +72,9 @@ public class Sommet {
 	 */
 	public void addPredecesseur (Sommet predecesseur) {
 		// On verifie que le sommet à ajouter ne fait pas déjà partie de la liste
-		if (this.predecesseurs.contains(predecesseur)) {
-			throw new IllegalArgumentException("Sommet déjà contenu dans la liste");
+		if (!(this.predecesseurs.contains(predecesseur))) {
+			this.predecesseurs.add(predecesseur);
 		}
-
-		this.predecesseurs.add(predecesseur);
 	}
 
 	/**
@@ -90,7 +86,6 @@ public class Sommet {
 		if ((this.successeurs.contains(successeur))) {
 			this.successeurs.remove(successeur);
 		}
-
 	}
 
 	/**
@@ -99,9 +94,13 @@ public class Sommet {
 	 */
 	public void removePredecesseur (Sommet predecesseur) {
 		// On verifie que le sommet à supprimer est dans  la liste
-		if ((this.predecesseurs.contains(predecesseur))) {
-			this.predecesseurs.remove(predecesseur);
+		for(int i = 0 ; i < this.predecesseurs.size(); i ++) {
+
+			if (predecesseur.getId() == this.predecesseurs.get(i).getId()) {
+				this.predecesseurs.remove(this.predecesseurs.get(i));
+			}
 		}
+
 	}
 
 	/**
@@ -158,6 +157,26 @@ public class Sommet {
 	 */
 	public void setMarque(boolean marque) {
 		this.marque = marque;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		StringBuilder chaine = new StringBuilder();
+		chaine.append("Id du sommet :" + this.id + "\nPredecesseur :");
+		// Affichage de tous ses prédecesseurs
+		for(int i = 0; i < this.predecesseurs.size(); i++ ) {
+			chaine.append(predecesseurs.get(i).getId() + ", ");
+		}
+		chaine.append("\nSucesseurs : ");
+		// Affichage de tous ses sucesseurs
+		for(int i = 0; i < this.successeurs.size(); i++ ) {
+			chaine.append(successeurs.get(i).getId() + ", ");
+		}
+		chaine.append("\n");
+		return chaine.toString();
 	}
 
 
