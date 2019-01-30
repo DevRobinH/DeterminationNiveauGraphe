@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.QuadCurve?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="720.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.GrapheController">
+   <top>
+      <Pane prefHeight="800.0" prefWidth="850.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="lbMatPuissanceInv" layoutX="479.0" layoutY="437.0" text="A =">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
+            <Rectangle arcHeight="25.0" arcWidth="25.0" fill="#1f93ff00" height="64.0" layoutX="256.0" layoutY="170.0" stroke="#b7bcbd" strokeType="INSIDE" width="181.0" />
+            <Rectangle arcHeight="25.0" arcWidth="25.0" fill="#1f93ff00" height="64.0" layoutX="93.0" layoutY="170.0" stroke="#b7bcbd" strokeType="INSIDE" width="135.0" />
+            <Rectangle fx:id="rectPuissanceInverse" arcHeight="25.0" arcWidth="25.0" fill="#1f93ff00" height="232.0" layoutX="441.0" layoutY="375.0" stroke="#b7bcbd" strokeType="INSIDE" width="379.0" />
+            <Rectangle arcHeight="25.0" arcWidth="25.0" fill="#1f93ff00" height="43.0" layoutX="22.0" layoutY="54.0" stroke="#63d2ee" strokeType="INSIDE" width="807.0" />
+            <Label layoutX="56.0" layoutY="61.0" prefHeight="30.0" prefWidth="456.0" text="Matrices Hermitiennes" textFill="#347397">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="42.0" fitWidth="164.0" layoutX="631.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@3iLcomplet.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="265.0" layoutY="63.0" text="  | Valeurs propres" textFill="#347397">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <Label fx:id="lbMatPuissanceInvExposant" layoutX="488.0" layoutY="428.0" style="-fx-background-color: #F4F4F4;" text="-1">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Label>
+            <TextField fx:id="champMatrice1_1" layoutX="537.0" layoutY="151.0" prefHeight="30.0" prefWidth="57.0">
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor></TextField>
+            <TextField fx:id="champMatrice2_3" disable="true" layoutX="668.0" layoutY="191.0" prefHeight="30.0" prefWidth="57.0">
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor></TextField>
+            <TextField fx:id="champMatrice2_2" layoutX="602.0" layoutY="191.0" prefHeight="30.0" prefWidth="57.0">
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor></TextField>
+            <TextField fx:id="champMatrice2_1" layoutX="537.0" layoutY="191.0" prefHeight="30.0" prefWidth="57.0">
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor></TextField>
+            <TextField fx:id="champMatrice1_3" disable="true" layoutX="668.0" layoutY="151.0" prefHeight="30.0" prefWidth="57.0">
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor></TextField>
+            <TextField fx:id="champMatrice1_2" layoutX="602.0" layoutY="151.0" prefHeight="30.0" prefWidth="57.0">
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor></TextField>
+            <TextField fx:id="champMatrice3_3" disable="true" layoutX="668.0" layoutY="231.0" prefHeight="30.0" prefWidth="57.0">
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor></TextField>
+            <TextField fx:id="champMatrice3_2" disable="true" layoutX="602.0" layoutY="231.0" prefHeight="30.0" prefWidth="57.0">
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor></TextField>
+            <TextField fx:id="champMatrice3_1" disable="true" layoutX="537.0" layoutY="231.0" prefHeight="30.0" prefWidth="57.0">
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor></TextField>
+            <QuadCurve controlX="-30.0" controlY="-64.0" endX="-11.0" endY="-118.0" fill="#f4f4f4" layoutX="538.0" layoutY="265.0" startX="-11.0" startY="-1.0" stroke="#a1a1a1" strokeType="INSIDE" />
+            <QuadCurve controlX="10.0" controlY="-65.0" endX="-11.0" endY="-118.0" fill="#f4f4f4" layoutX="746.0" layoutY="264.0" startX="-11.0" startY="-1.0" stroke="#a1a1a1" strokeType="INSIDE" />
+            <Label layoutX="476.0" layoutY="162.0" text="A =">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
+            <Button fx:id="btCalculer" layoutX="576.0" layoutY="279.0" mnemonicParsing="false" onAction="#actionCalculer" prefHeight="25.0" prefWidth="110.0" text="Valider">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <RadioButton fx:id="choix2x2" layoutX="285.0" layoutY="195.0" mnemonicParsing="false" onAction="#actionChoixMatrice" selected="true" text="2x2">
+               <toggleGroup>
+                  <ToggleGroup fx:id="choixMatrice" />
+               </toggleGroup>
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </RadioButton>
+            <RadioButton fx:id="choix3x3" layoutX="350.0" layoutY="195.0" mnemonicParsing="false" onAction="#actionChoixMatrice" text="3x3" toggleGroup="$choixMatrice">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </RadioButton>
+            <Rectangle fx:id="rectSymetrie" arcHeight="25.0" arcWidth="25.0" fill="#1f93ff00" height="52.0" layoutX="89.0" layoutY="266.0" stroke="#b7bcbd" strokeType="INSIDE" width="356.0" />
+            <Label fx:id="lbMatSymetrique" layoutX="105.0" layoutY="276.0" prefHeight="30.0" prefWidth="324.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="lbTitreSymetrique" layoutX="134.0" layoutY="256.0" style="-fx-background-color: #F4F4F4;" text=" Symétrie " textFill="#347397">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Rectangle fx:id="rectLambdaMax" arcHeight="25.0" arcWidth="25.0" fill="#1f93ff00" height="69.0" layoutX="99.0" layoutY="660.0" stroke="#b7bcbd" strokeType="INSIDE" width="277.0" />
+            <Label fx:id="lbTitreLambdaMax" layoutX="139.0" layoutY="649.0" prefHeight="25.0" prefWidth="57.0" style="-fx-background-color: #F4F4F4;" text="  λ Max " textFill="#347397">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Rectangle fx:id="rectLambdaMin" arcHeight="25.0" arcWidth="25.0" fill="#1f93ff00" height="69.0" layoutX="491.0" layoutY="659.0" stroke="#b7bcbd" strokeType="INSIDE" width="277.0" />
+            <Rectangle fx:id="rectPuissance" arcHeight="25.0" arcWidth="25.0" fill="#1f93ff00" height="231.0" layoutX="43.0" layoutY="376.0" stroke="#b7bcbd" strokeType="INSIDE" width="379.0" />
+            <Label fx:id="lbTitreLambdaMin" layoutX="539.0" layoutY="647.0" prefHeight="21.0" prefWidth="52.0" style="-fx-background-color: #F4F4F4;" text=" λ Min " textFill="#347397">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="lbTitrePuissance" layoutX="87.0" layoutY="364.0" prefHeight="25.0" prefWidth="187.0" style="-fx-background-color: #F4F4F4;" text=" Méthode de la Puissance " textFill="#347397">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="lbTitrePuissanceInverse" layoutX="476.0" layoutY="362.0" prefHeight="25.0" prefWidth="242.0" style="-fx-background-color: #F4F4F4;" text=" Méthode de la Puissance Inverse " textFill="#347397">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="lbLambdaMax" layoutX="304.0" layoutY="685.0" prefHeight="20.0" prefWidth="52.0" textFill="#347397">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Label>
+            <Button fx:id="btCalculerPuissance" layoutX="160.0" layoutY="571.0" mnemonicParsing="false" onAction="#actionPuissance" prefHeight="10.0" prefWidth="135.0" text="Calculer">
+               <font>
+                  <Font size="11.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="btCalculerPuissanceInverse" layoutX="563.0" layoutY="571.0" mnemonicParsing="false" onAction="#actionPuissanceInverse" prefHeight="10.0" prefWidth="135.0" text="Calculer">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Button>
+            <Button layoutX="124.0" layoutY="192.0" mnemonicParsing="false" onAction="#rappelFenetre" prefHeight="25.0" prefWidth="73.0" text="Définitions">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Label layoutX="123.0" layoutY="159.0" style="-fx-background-color: #F4F4F4;" text=" Rappels " textFill="#347397">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="lbMatPuissance" layoutX="66.0" layoutY="446.0" text="A =">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="lbMatrice1_1" layoutX="114.0" layoutY="439.0">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+            <Label fx:id="lbMatrice1_2" layoutX="166.0" layoutY="439.0">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+            <Label fx:id="lbMatrice1_3" layoutX="217.0" layoutY="439.0">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+            <Label fx:id="lbMatrice3_2" layoutX="165.0" layoutY="496.0">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+            <Label fx:id="lbMatrice2_2" layoutX="166.0" layoutY="468.0">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+            <Label fx:id="lbMatrice2_1" layoutX="115.0" layoutY="468.0">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+            <Label fx:id="lbMatrice3_1" layoutX="115.0" layoutY="496.0">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+            <Label fx:id="lbMatrice3_3" layoutX="216.0" layoutY="496.0">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+            <Label fx:id="lbMatrice2_3" layoutX="217.0" layoutY="468.0">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+            <QuadCurve fx:id="parentheseGPuissance" controlX="-30.0" controlY="-64.0" endX="-11.0" endY="-109.0" fill="#f4f4f4" layoutX="124.0" layoutY="539.0" startX="-11.0" startY="-13.0" stroke="#a1a1a1" strokeType="INSIDE" />
+            <QuadCurve fx:id="parentheseDPuissance" controlX="10.0" controlY="-63.0" endX="-11.0" endY="-109.0" fill="#f4f4f4" layoutX="271.0" layoutY="540.0" startX="-11.0" startY="-13.0" stroke="#a1a1a1" strokeType="INSIDE" />
+            <Label fx:id="lbVecteurPuissance" layoutX="310.0" layoutY="446.0" text="Xo = ">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <QuadCurve fx:id="parentheseGVecteur" controlX="-30.0" controlY="-64.0" endX="-11.0" endY="-109.0" fill="#f4f4f4" layoutX="366.0" layoutY="538.0" startX="-11.0" startY="-13.0" stroke="#a1a1a1" strokeType="INSIDE" />
+            <QuadCurve fx:id="parentheseDVecteur" controlX="10.0" controlY="-63.0" endX="-11.0" endY="-109.0" fill="#f4f4f4" layoutX="384.0" layoutY="538.0" startX="-11.0" startY="-13.0" stroke="#a1a1a1" strokeType="INSIDE" />
+            <Label fx:id="lbVecteur1_1" layoutX="361.0" layoutY="442.0" text="1">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+            <Label fx:id="lbVecteur2_1" layoutX="362.0" layoutY="469.0" text="0">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+            <Label fx:id="lbVecteur3_1" layoutX="362.0" layoutY="496.0">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+            <QuadCurve fx:id="parentheseGPuissanceInv" controlX="-30.0" controlY="-64.0" endX="-11.0" endY="-118.0" fill="#f4f4f4" layoutX="541.0" layoutY="540.0" startX="-11.0" startY="-1.0" stroke="#a1a1a1" strokeType="INSIDE" />
+            <QuadCurve fx:id="parentheseDPuissanceInv" controlX="10.0" controlY="-65.0" endX="-11.0" endY="-118.0" fill="#f4f4f4" layoutX="749.0" layoutY="539.0" startX="-11.0" startY="-1.0" stroke="#a1a1a1" strokeType="INSIDE" />
+            <TextField fx:id="champMatriceInv1_1" layoutX="539.0" layoutY="426.0" prefHeight="30.0" prefWidth="57.0">
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+            </TextField>
+            <TextField fx:id="champMatriceInv2_3" disable="true" layoutX="670.0" layoutY="466.0" prefHeight="30.0" prefWidth="57.0">
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+            </TextField>
+            <TextField fx:id="champMatriceInv2_2" layoutX="604.0" layoutY="466.0" prefHeight="30.0" prefWidth="57.0">
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+            </TextField>
+            <TextField fx:id="champMatriceInv2_1" layoutX="539.0" layoutY="466.0" prefHeight="30.0" prefWidth="57.0">
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+            </TextField>
+            <TextField fx:id="champMatriceInv1_3" disable="true" layoutX="670.0" layoutY="426.0" prefHeight="30.0" prefWidth="57.0">
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+            </TextField>
+            <TextField fx:id="champMatriceInv1_2" layoutX="604.0" layoutY="426.0" prefHeight="30.0" prefWidth="57.0">
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+            </TextField>
+            <TextField fx:id="champMatriceInv3_3" disable="true" layoutX="670.0" layoutY="506.0" prefHeight="30.0" prefWidth="57.0">
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+            </TextField>
+            <TextField fx:id="champMatriceInv3_2" disable="true" layoutX="604.0" layoutY="506.0" prefHeight="30.0" prefWidth="57.0">
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+            </TextField>
+            <TextField fx:id="champMatriceInv3_1" disable="true" layoutX="539.0" layoutY="506.0" prefHeight="30.0" prefWidth="57.0">
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+            </TextField>
+            <Label layoutX="280.0" layoutY="159.0" style="-fx-background-color: #F4F4F4;" text=" Choix Matrice " textFill="#347397">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="txtLambdaMax" layoutX="119.0" layoutY="686.0" text="La plus grande valeur propre est :" />
+            <Label fx:id="txtLambdaMin" layoutX="514.0" layoutY="685.0" text="La plus petite valeur propre est :" />
+            <Button fx:id="btReinitialiser" layoutX="378.0" layoutY="749.0" mnemonicParsing="false" onAction="#actionReinitialiser" text="    Réinitialiser    " />
+            <Label fx:id="lbLambdaMin" layoutX="694.0" layoutY="683.0" prefHeight="20.0" prefWidth="57.0" textFill="#347397">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </top>
+</BorderPane>
