@@ -105,88 +105,111 @@ public class Graphe {
 		// liste de sommet marqués
 		ArrayList<Sommet> listeMarques =  new ArrayList<Sommet>();
 
-		// Marquage des sommets sans prédecesseurs
-		listeMarques =  marquageSommet(niveau);
+		//while (!listeSommet.isEmpty()) {
+			// Marquage des sommets sans prédecesseurs
+			listeMarques =  marquageSommet(niveau);
 
-		// Pour chaque sommet marqué
-		for(int i = 0; i < listeMarques.size(); i++) {
-			// On va le supprimer de la liste des prédecesseurs et successeur de chaque sommet
-			// (s'il y sont présent)
+			// Pour chaque sommet marqué
+			for(int i = 0; i < listeMarques.size(); i++) {
+				// On choisit le prmeier sommet du graphe et ainsi de suite
+				for (int j = 0; j < this.listeSommet.size(); j++) {
+					System.out.println("On est sur le sommet : " + j);
+					// On parcourt la liste des predecesseurs de ce sommet
+					for (int k = 0 ; k <  this.listeSommet.get(j).getPredecesseurs().size(); k++) {
+						System.out.println("id du sommet à supprimer :"  + listeMarques.get(i).getId());
+						System.out.println("id du sommet de la liste des predecesseur :"  + this.listeSommet.get(j).getPredecesseurs().get(k).getId());
+						// si le sommet marqué et le predecesseur du sommet ont le meêm id
+						if(this.listeSommet.get(j).getPredecesseurs().get(k).getId().equals(listeMarques.get(i).getId()) ) {
+							// Suppression
+							System.out.println("On supprime fraté");
+							this.listeSommet.get(j).getPredecesseurs().remove(k);
+						}
+					}
 
-			for (int j = 0; j < this.listeSommet.size(); j++) {
-				listeSommet.get(j).removePredecesseur(listeMarques.get(i));
-				listeSommet.get(j).removeSuccesseur(listeMarques.get(i));
-				System.out.println(listeSommet.get(j).toString());
+					// Suppression du sommet de la liste
+					if (this.listeSommet.get(i).isMarque()) {
+						this.listeSommet.remove(i);
+					}
+				}
+				/*System.out.println("il reste maintenant " + listeSommet.size() + "sommets");
+				for (int j = 0; j < this.listeSommet.size(); j++) {
+					System.out.println(listeSommet.get(j).toString());
+				}*/
+
 			}
-
-		}
-
+			niveau ++;
+			listeMarques =  marquageSommet(niveau);
+			for(int i = 0; i < listeMarques.size(); i++) {
+				System.out.println(listeMarques.get(i).toString());
+			}
+		//}
+	}
 		// pour chaque sommet on va supprimer le ou les sommets marqués de leurs liste
 		//de prédeccesseurs ou sucesseur
 
-	}
 
 
-	/**
-	 * Marquage des sommet ne possédant pas de prédecesseurs
-	 * @param niveau niveau de décomposition du graphe
-	 * @return liste de sommet marqué
-	 */
-	private ArrayList<Sommet> marquageSommet(int niveau) {
-		ArrayList<Sommet> marques = new ArrayList<Sommet>();
-		// Accéder à la liste de sommet
-		for(int i = 0; i < listeSommet.size(); i++) {
-			// Affiche les sommets sans prédécesseurs
-			if (listeSommet.get(i).getPredecesseurs().isEmpty()) {
-				System.out.println("Niveau " +  niveau + " : " + listeSommet.get(i).getId());
-				// on marque le sommet
-				listeSommet.get(i).setMarque(true);
-				// insertion du sommet marqué à la liste
-				marques.add(listeSommet.get(i));
+
+		/**
+		 * Marquage des sommet ne possédant pas de prédecesseurs
+		 * @param niveau niveau de décomposition du graphe
+		 * @return liste de sommet marqué
+		 */
+		private ArrayList<Sommet> marquageSommet(int niveau) {
+			ArrayList<Sommet> marques = new ArrayList<Sommet>();
+			// Accéder à la liste de sommet
+			for(int i = 0; i < listeSommet.size(); i++) {
+				// Affiche les sommets sans prédécesseurs
+				if (listeSommet.get(i).getPredecesseurs().isEmpty()) {
+					System.out.println("Niveau " +  niveau + " : " + listeSommet.get(i).getId());
+					// on marque le sommet
+					listeSommet.get(i).setMarque(true);
+					// insertion du sommet marqué à la liste
+					marques.add(listeSommet.get(i));
+				}
 			}
+			return marques;
 		}
-		return marques;
-	}
-	/**
-	 * @return the sommet
-	 */
-	public int getSommet() {
-		return sommet;
-	}
+		/**
+		 * @return the sommet
+		 */
+		public int getSommet() {
+			return sommet;
+		}
 
-	/**
-	 * @param sommet the sommet to set
-	 */
-	public void setSommet(int sommet) {
-		this.sommet = sommet;
-	}
+		/**
+		 * @param sommet the sommet to set
+		 */
+		public void setSommet(int sommet) {
+			this.sommet = sommet;
+		}
 
-	/**
-	 * @return the matriceAdjacence
-	 */
-	public int[][] getMatriceAdjacence() {
-		return matriceAdjacence;
-	}
+		/**
+		 * @return the matriceAdjacence
+		 */
+		public int[][] getMatriceAdjacence() {
+			return matriceAdjacence;
+		}
 
-	/**
-	 * @param matriceAdjacence the matriceAdjacence to set
-	 */
-	public void setMatriceAdjacence(int[][] matriceAdjacence) {
-		this.matriceAdjacence = matriceAdjacence;
-	}
+		/**
+		 * @param matriceAdjacence the matriceAdjacence to set
+		 */
+		public void setMatriceAdjacence(int[][] matriceAdjacence) {
+			this.matriceAdjacence = matriceAdjacence;
+		}
 
-	/**
-	 * @return the listeSommet
-	 */
-	public List<Sommet> getListeSommet() {
-		return listeSommet;
-	}
+		/**
+		 * @return the listeSommet
+		 */
+		public List<Sommet> getListeSommet() {
+			return listeSommet;
+		}
 
-	/**
-	 * @param listeSommet the listeSommet to set
-	 */
-	public void setListeSommet(List<Sommet> listeSommet) {
-		this.listeSommet = listeSommet;
-	}
+		/**
+		 * @param listeSommet the listeSommet to set
+		 */
+		public void setListeSommet(List<Sommet> listeSommet) {
+			this.listeSommet = listeSommet;
+		}
 
-}
+	}
