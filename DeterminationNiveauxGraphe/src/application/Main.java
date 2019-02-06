@@ -17,7 +17,7 @@ public class Main extends Application {
 			Scene scene = new Scene(root,850,780);
 
 			// Titre de la fenêtre
-			primaryStage.setTitle("Valeurs propres d'une Matrice Hermitienne");
+			primaryStage.setTitle("Niveaux d'un graphe");
 
 			// Logo 3iL
 			primaryStage.getIcons().setAll(new Image(getClass().getResource("3ilogo.png").toExternalForm()));
