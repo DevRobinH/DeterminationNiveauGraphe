@@ -27,7 +27,7 @@
                   <Font size="17.0" />
                </font>
             </Label>
-            <Rectangle arcHeight="25.0" arcWidth="25.0" fill="#1f93ff00" height="69.0" layoutX="99.0" layoutY="660.0" stroke="#b7bcbd" strokeType="INSIDE" width="277.0" />
+            <Rectangle arcHeight="25.0" arcWidth="25.0" fill="#1f93ff00" height="69.0" layoutX="99.0" layoutY="660.0" stroke="#b7bcbd" strokeType="INSIDE" width="278.0" />
             <Label layoutX="139.0" layoutY="649.0" prefHeight="25.0" prefWidth="70.0" style="-fx-background-color: #F4F4F4;" text=" Résultat" textFill="#347397">
                <font>
                   <Font size="16.0" />
