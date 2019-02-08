@@ -5,6 +5,7 @@ import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 import javafx.fxml.FXMLLoader;
 
 
@@ -13,7 +14,7 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 
 		try {
-			BorderPane root = (BorderPane)FXMLLoader.load(getClass().getResource("Graphe.fxml"));
+			GridPane root = (GridPane)FXMLLoader.load(getClass().getResource("Graphe.fxml"));
 			Scene scene = new Scene(root,850,780);
 
 			// Titre de la fenêtre
