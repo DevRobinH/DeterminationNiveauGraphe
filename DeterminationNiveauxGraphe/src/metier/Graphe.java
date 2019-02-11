@@ -5,6 +5,7 @@
 package metier;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -99,117 +100,132 @@ public class Graphe {
 	/**
 	 * Détermination des différents niveaux d'un graphe orientée
 	 */
-	public void determinationNiveau () {
+	public HashMap<String,ArrayList<Sommet>> determinationNiveau () {
 		//niveau du graphe
 		int niveau = 0;
 		// liste de sommet marqués
 		ArrayList<Sommet> listeMarques =  new ArrayList<Sommet>();
-
+		// Map avec pour clé le niveau 
+		// Et pour valeur la liste de sommet correspondant au niveau
+		// A retourner
+        HashMap<String,ArrayList<Sommet>> niveaux = new HashMap<>();
+		
 		//while (!listeSommet.isEmpty()) {
-			// Marquage des sommets sans prédecesseurs
-			listeMarques =  marquageSommet(niveau);
+		// Marquage des sommets sans prédecesseurs
+		listeMarques =  marquageSommet(niveau);
 
-			// Pour chaque sommet marqué
+		System.out.println("il y a " + listeMarques.size() + " sommets marqués");
+
+		while (!listeSommet.isEmpty()) {
+			// pour chaque sommet marqué 
 			for(int i = 0; i < listeMarques.size(); i++) {
-				// On choisit le prmeier sommet du graphe et ainsi de suite
-				for (int j = 0; j < this.listeSommet.size(); j++) {
-					System.out.println("On est sur le sommet : " + j);
-					// On parcourt la liste des predecesseurs de ce sommet
-					for (int k = 0 ; k <  this.listeSommet.get(j).getPredecesseurs().size(); k++) {
-						System.out.println("id du sommet à supprimer :"  + listeMarques.get(i).getId());
-						System.out.println("id du sommet de la liste des predecesseur :"  + this.listeSommet.get(j).getPredecesseurs().get(k).getId());
-						// si le sommet marqué et le predecesseur du sommet ont le meêm id
-						if(this.listeSommet.get(j).getPredecesseurs().get(k).getId().equals(listeMarques.get(i).getId()) ) {
-							// Suppression
-							System.out.println("On supprime fraté");
-							this.listeSommet.get(j).getPredecesseurs().remove(k);
+				//affichage de son id 
+				System.out.println("id du sommet marqué : " + listeMarques.get(i).getId());
+
+				System.out.print("id des sommets du graphe : ");
+				// on parcourt la liste des sommets du graphe
+				for(int j = 0; j < listeSommet.size(); j++) {
+					// affichage de l'id des sommets 
+					System.out.print(listeSommet.get(j).getId() + " ");
+
+					System.out.print("id de ses predecesseurs : ");
+					// on parcourt les prédecesseurs de chaque sommet
+					for(int k = 0; k < listeSommet.get(j).getPredecesseurs().size(); k++) {
+						// affichage de l'id des predecesseurs 
+						System.out.println(listeSommet.get(j).getPredecesseurs().get(k).getId());
+
+						// on supprime le predecesseur s'il possede le même
+						// id que le sommet marqué
+						if(listeMarques.get(i).getId().equals(listeSommet.get(j).getPredecesseurs().get(k).getId())) {
+							System.out.print("   il faut le supprimé!\n");
+							listeSommet.get(j).getPredecesseurs().remove(k);
 						}
+						// 
 					}
-
-					// Suppression du sommet de la liste
-					if (this.listeSommet.get(i).isMarque()) {
-						this.listeSommet.remove(i);
+					System.out.println("\n");
+				}
+			}
+			for (int i = 0; i < listeMarques.size(); i++ ) {
+				// on enlève de la liste des sommets le sommet ancinnement marqué
+				for(int j = 0; j < listeSommet.size(); j++) {
+					if (listeMarques.get(i).getId().equals(listeSommet.get(j).getId())) {
+						listeSommet.remove(j);
 					}
 				}
-				/*System.out.println("il reste maintenant " + listeSommet.size() + "sommets");
-				for (int j = 0; j < this.listeSommet.size(); j++) {
-					System.out.println(listeSommet.get(j).toString());
-				}*/
-
 			}
+			// on remplit la hashMap 
+			niveaux.put(Integer.toString(niveau), listeMarques);
 			niveau ++;
+			listeMarques.clear();
 			listeMarques =  marquageSommet(niveau);
-			for(int i = 0; i < listeMarques.size(); i++) {
-				System.out.println(listeMarques.get(i).toString());
-			}
-		//}
-	}
-		// pour chaque sommet on va supprimer le ou les sommets marqués de leurs liste
-		//de prédeccesseurs ou sucesseur
 
-
-
-
-		/**
-		 * Marquage des sommet ne possédant pas de prédecesseurs
-		 * @param niveau niveau de décomposition du graphe
-		 * @return liste de sommet marqué
-		 */
-		private ArrayList<Sommet> marquageSommet(int niveau) {
-			ArrayList<Sommet> marques = new ArrayList<Sommet>();
-			// Accéder à la liste de sommet
-			for(int i = 0; i < listeSommet.size(); i++) {
-				// Affiche les sommets sans prédécesseurs
-				if (listeSommet.get(i).getPredecesseurs().isEmpty()) {
-					System.out.println("Niveau " +  niveau + " : " + listeSommet.get(i).getId());
-					// on marque le sommet
-					listeSommet.get(i).setMarque(true);
-					// insertion du sommet marqué à la liste
-					marques.add(listeSommet.get(i));
-				}
-			}
-			return marques;
 		}
-		/**
-		 * @return the sommet
-		 */
-		public int getSommet() {
-			return sommet;
-		}
-
-		/**
-		 * @param sommet the sommet to set
-		 */
-		public void setSommet(int sommet) {
-			this.sommet = sommet;
-		}
-
-		/**
-		 * @return the matriceAdjacence
-		 */
-		public int[][] getMatriceAdjacence() {
-			return matriceAdjacence;
-		}
-
-		/**
-		 * @param matriceAdjacence the matriceAdjacence to set
-		 */
-		public void setMatriceAdjacence(int[][] matriceAdjacence) {
-			this.matriceAdjacence = matriceAdjacence;
-		}
-
-		/**
-		 * @return the listeSommet
-		 */
-		public List<Sommet> getListeSommet() {
-			return listeSommet;
-		}
-
-		/**
-		 * @param listeSommet the listeSommet to set
-		 */
-		public void setListeSommet(List<Sommet> listeSommet) {
-			this.listeSommet = listeSommet;
-		}
+		return niveaux;
 
 	}
+
+	/**
+	 * Marquage des sommet ne possédant pas de prédecesseurs
+	 * @param niveau niveau de décomposition du graphe
+	 * @return liste de sommet marqué
+	 */
+	private ArrayList<Sommet> marquageSommet(int niveau) {
+		ArrayList<Sommet> marques = new ArrayList<Sommet>();
+		System.out.print("Niveau " +  niveau + " : ");
+		// Accéder à la liste de sommet
+		for(int i = 0; i < listeSommet.size(); i++) {
+			// Affiche les sommets sans prédécesseurs
+			if (listeSommet.get(i).getPredecesseurs().isEmpty()) {
+				System.out.print(listeSommet.get(i).getId()+ "  ");
+				// on marque le sommet
+				listeSommet.get(i).setMarque(true);
+				// insertion du sommet marqué à la liste
+				marques.add(listeSommet.get(i));
+			}
+		}
+		System.out.println("\n");
+		return marques;
+	}
+	/**
+	 * @return the sommet
+	 */
+	public int getSommet() {
+		return sommet;
+	}
+
+	/**
+	 * @param sommet the sommet to set
+	 */
+	public void setSommet(int sommet) {
+		this.sommet = sommet;
+	}
+
+	/**
+	 * @return the matriceAdjacence
+	 */
+	public int[][] getMatriceAdjacence() {
+		return matriceAdjacence;
+	}
+
+	/**
+	 * @param matriceAdjacence the matriceAdjacence to set
+	 */
+	public void setMatriceAdjacence(int[][] matriceAdjacence) {
+		this.matriceAdjacence = matriceAdjacence;
+	}
+
+	/**
+	 * @return the listeSommet
+	 */
+	public List<Sommet> getListeSommet() {
+		return listeSommet;
+	}
+
+	/**
+	 * @param listeSommet the listeSommet to set
+	 */
+	public void setListeSommet(List<Sommet> listeSommet) {
+		this.listeSommet = listeSommet;
+	}
+
+}
