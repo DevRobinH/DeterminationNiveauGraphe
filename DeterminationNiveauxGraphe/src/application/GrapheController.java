@@ -36,6 +36,38 @@ public class GrapheController {
     @FXML
     private ComboBox<String> comboBoxTaille;
     
+    @FXML
+    private TextField niveauA;
+    @FXML
+    private TextField niveauB;
+    @FXML
+    private TextField niveauC;
+    @FXML
+    private TextField niveauD;
+    @FXML
+    private TextField niveauE;
+    @FXML
+    private TextField niveauF;
+    @FXML
+    private TextField niveauG;
+    @FXML
+    private TextField niveauH;
+    @FXML
+    private TextField niveauI;
+    @FXML
+    private TextField niveauJ;
+    @FXML
+    private TextField niveauK;
+    @FXML
+    private TextField niveauL;
+    @FXML
+    private TextField niveauM;
+    @FXML
+    private TextField niveauN;
+    @FXML
+    private TextField niveauO;
+    
+    
     // Liste de valeurs à intégrer dans la comboBox
     ObservableList<String> lstTailles = FXCollections.observableArrayList("2","3","4","5","6","7","8","9","10","11","12","13","14","15");
     
@@ -197,6 +229,21 @@ public class GrapheController {
             	System.out.println(matrice[i][j].getText());
             }
         }
+    }
+    
+    /**
+     * Réinitialise la matrice
+     */
+    public void cleanMatrice(){
+    	for(int i = 1;  i<=nbsom; i++)
+        {
+            for(int j = 1;  j<=nbsom; j++)
+            {
+            	matrice[i][j].setText("0");
+            }
+        }
+    	
+    	System.out.println("\nMatrice réinitialisée.");
     }
     
 }
