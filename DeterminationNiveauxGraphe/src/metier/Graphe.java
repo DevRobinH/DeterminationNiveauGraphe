@@ -110,7 +110,6 @@ public class Graphe {
 		// A retourner
         HashMap<String,ArrayList<Sommet>> niveaux = new HashMap<>();
 		
-		//while (!listeSommet.isEmpty()) {
 		// Marquage des sommets sans prédecesseurs
 		listeMarques =  marquageSommet(niveau);
 
@@ -153,8 +152,9 @@ public class Graphe {
 					}
 				}
 			}
+			
 			// on remplit la hashMap 
-			niveaux.put(Integer.toString(niveau), listeMarques);
+			niveaux.put(Integer.toString(niveau), (ArrayList<Sommet>)listeMarques.clone());
 			niveau ++;
 			listeMarques.clear();
 			listeMarques =  marquageSommet(niveau);

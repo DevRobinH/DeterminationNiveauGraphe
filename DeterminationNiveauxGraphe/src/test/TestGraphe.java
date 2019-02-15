@@ -5,6 +5,8 @@ package test;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import metier.Graphe;
 import metier.Sommet;
@@ -85,16 +87,14 @@ public class TestGraphe {
 			 System.out.println(grapheTest.getListeSommet().get(i).toString());
 		}*/
 		System.out.println("Resultat : ");
-		for (String i : niveaux.keySet()) {
-			System.out.print("\nNiveau : " + i + "\n");
-
-			for (ArrayList<Sommet> j : niveaux.values()) {
-				/*for (int k = 0; k < j.size(); k++) {
-					System.out.print(j.get(k).getId() + " ");
-				}*/
-				System.out.println(j.size());
-			}
-			System.out.println(niveaux.toString());
+	
+		
+		for (Entry<String, ArrayList<Sommet>> entree : niveaux.entrySet())
+		{
+		  System.out.print("\nNiveau : " + entree.getKey() + "\n");
+		  for(int i = 0; i < entree.getValue().size(); i++) {
+		      System.out.print(entree.getValue().get(i).getId() + " "); 
+		  }
 		}
 	}
 
