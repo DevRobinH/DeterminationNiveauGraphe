@@ -35,9 +35,12 @@ public class TestGraphe {
 			{0,0,0,0,0,0,0},
 			{0,0,0,0,0,1,0}};
 
-	public static final int MATRICE_TEST3[][] =  {{0,1,0},
-			{0,0,1},
-			{0,0,0}};
+	public static final int MATRICE_TEST3[][] =  {{0,1,1,0,0,0},
+												  {0,0,0,1,0,0},
+												  {0,1,0,1,0,0},
+												  {0,0,0,0,1,1},
+												  {0,0,0,0,0,1},
+												  {0,0,0,0,0,0}};
 
 
 	/**
@@ -75,10 +78,10 @@ public class TestGraphe {
 	public static void main(String[] args) {
 		//testCreationGraphe();
 		HashMap<String,ArrayList<Sommet>> niveaux = new HashMap<>();
-		Graphe grapheTest = new Graphe(MATRICE_TEST2.length,MATRICE_TEST2);
-		for (int i = 0; i < grapheTest.getListeSommet().size(); i++){
+		Graphe grapheTest = new Graphe(MATRICE_TEST3.length,MATRICE_TEST3);
+		/*for (int i = 0; i < grapheTest.getListeSommet().size(); i++){
 			System.out.println(grapheTest.getListeSommet().get(i).toString());
-		}
+		}*/
 
 		System.out.println("############################################");
 		niveaux = grapheTest.determinationNiveau();

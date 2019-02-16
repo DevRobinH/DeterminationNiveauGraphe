@@ -108,55 +108,55 @@ public class Graphe {
 		// Map avec pour clé le niveau 
 		// Et pour valeur la liste de sommet correspondant au niveau
 		// A retourner
-        HashMap<String,ArrayList<Sommet>> niveaux = new HashMap<>();
-		
+		HashMap<String,ArrayList<Sommet>> niveaux = new HashMap<>();
+
 		// Marquage des sommets sans prédecesseurs
 		listeMarques =  marquageSommet(niveau);
-
-		System.out.println("il y a " + listeMarques.size() + " sommets marqués");
 
 		while (!listeSommet.isEmpty()) {
 			// pour chaque sommet marqué 
 			for(int i = 0; i < listeMarques.size(); i++) {
 				//affichage de son id 
-				System.out.println("id du sommet marqué : " + listeMarques.get(i).getId());
+				System.out.println("On recherche " + listeMarques.get(i).getId() 
+						+ " dans la liste des prédécesseurs de chaque sommet\n");
 
-				System.out.print("id des sommets du graphe : ");
 				// on parcourt la liste des sommets du graphe
 				for(int j = 0; j < listeSommet.size(); j++) {
 					// affichage de l'id des sommets 
-					System.out.print(listeSommet.get(j).getId() + " ");
-
-					System.out.print("id de ses predecesseurs : ");
+					//System.out.print("Sommet : " + listeSommet.get(j).getId() + "  \n");
+					System.out.print(listeSommet.get(j).toString());
+					//System.out.print("Ses predecesseurs : ");
 					// on parcourt les prédecesseurs de chaque sommet
 					for(int k = 0; k < listeSommet.get(j).getPredecesseurs().size(); k++) {
 						// affichage de l'id des predecesseurs 
-						System.out.println(listeSommet.get(j).getPredecesseurs().get(k).getId());
+						//	System.out.print(listeSommet.get(j).getPredecesseurs().get(k).getId() + " ");
 
 						// on supprime le predecesseur s'il possede le même
 						// id que le sommet marqué
 						if(listeMarques.get(i).getId() == listeSommet.get(j).getPredecesseurs().get(k).getId()) {
-							System.out.print("   il faut le supprimé!\n");
+							System.out.print("*On effectue la suppression\n");
 							listeSommet.get(j).getPredecesseurs().remove(k);
 						}
-						// 
 					}
-					System.out.println("\n");
+					System.out.print("\n");
 				}
 			}
 			for (int i = 0; i < listeMarques.size(); i++ ) {
 				// on enlève de la liste des sommets le sommet ancinnement marqué
 				for(int j = 0; j < listeSommet.size(); j++) {
 					if (listeMarques.get(i).getId()==listeSommet.get(j).getId()) {
+						System.out.print("On supprime " + listeMarques.get(i).getId()
+								+ " de la liste des sommets");
 						listeSommet.remove(j);
 					}
 				}
 			}
-			
+
 			// on remplit la hashMap 
 			niveaux.put(Integer.toString(niveau), (ArrayList<Sommet>)listeMarques.clone());
 			niveau ++;
 			listeMarques.clear();
+			System.out.println(" \n");
 			listeMarques =  marquageSommet(niveau);
 
 		}

@@ -168,12 +168,18 @@ public class Sommet {
 		chaine.append("Id du sommet :" + this.id + "\nPredecesseur :");
 		// Affichage de tous ses prédecesseurs
 		for(int i = 0; i < this.predecesseurs.size(); i++ ) {
-			chaine.append(predecesseurs.get(i).getId() + ", ");
+			chaine.append(predecesseurs.get(i).getId());
+			if (i < predecesseurs.size()-1) {
+				chaine.append(", ");
+			}
 		}
 		chaine.append("\nSucesseurs : ");
 		// Affichage de tous ses sucesseurs
 		for(int i = 0; i < this.successeurs.size(); i++ ) {
-			chaine.append(successeurs.get(i).getId() + ", ");
+			chaine.append(successeurs.get(i).getId());
+			if (i != successeurs.size()) {
+				chaine.append(", ");
+			}
 		}
 		chaine.append("\n");
 		return chaine.toString();
