@@ -78,17 +78,17 @@ public class Graphe {
 		// Parcours des lignes
 		for (int i = 0; i < matrice.length; i++) {
 			// parcours des éléments de la ligne afin de déterminer les successeurs
-			sommets.add(new Sommet(Integer.toString(i)));
+			sommets.add(new Sommet((char)(i+65)));
 			for (int j = 0; j < matrice[i].length; j++) {
 				// s'il y a un 1 dans la matrice
 				if (matrice[i][j] == 1) {
-					sommets.get(i).addSuccesseur(new Sommet(Integer.toString(j)));
+					sommets.get(i).addSuccesseur(new Sommet((char)(j+65)));
 				}
 			}
 			// parcours des colonnes afin de déterminer les prédecesseurs
 			for (int k = 0; k < matrice.length; k++) {
 				if (matrice[k][i] == 1) {
-					sommets.get(i).addPredecesseur(new Sommet(Integer.toString(k)));
+					sommets.get(i).addPredecesseur(new Sommet((char)(k+65)));
 				}
 			}
 		}
@@ -135,7 +135,7 @@ public class Graphe {
 
 						// on supprime le predecesseur s'il possede le même
 						// id que le sommet marqué
-						if(listeMarques.get(i).getId().equals(listeSommet.get(j).getPredecesseurs().get(k).getId())) {
+						if(listeMarques.get(i).getId() == listeSommet.get(j).getPredecesseurs().get(k).getId()) {
 							System.out.print("   il faut le supprimé!\n");
 							listeSommet.get(j).getPredecesseurs().remove(k);
 						}
@@ -147,7 +147,7 @@ public class Graphe {
 			for (int i = 0; i < listeMarques.size(); i++ ) {
 				// on enlève de la liste des sommets le sommet ancinnement marqué
 				for(int j = 0; j < listeSommet.size(); j++) {
-					if (listeMarques.get(i).getId().equals(listeSommet.get(j).getId())) {
+					if (listeMarques.get(i).getId()==listeSommet.get(j).getId()) {
 						listeSommet.remove(j);
 					}
 				}

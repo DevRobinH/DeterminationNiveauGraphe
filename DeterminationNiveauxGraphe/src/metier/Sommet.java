@@ -15,7 +15,7 @@ import java.util.List;
 public class Sommet {
 
 	/** Identifiant du sommet du graphe */
-	private String id;
+	private char id;
 
 
 	/** Liste des successeurs du sommet */
@@ -33,7 +33,7 @@ public class Sommet {
 	 * Création d'un sommet
 	 * @param identifiant id du sommet
 	 */
-	public Sommet (String identifiant) {
+	public Sommet (char identifiant) {
 		this.id = identifiant;
 		this.successeurs = new ArrayList<>();
 		this.predecesseurs = new ArrayList<>();
@@ -47,7 +47,7 @@ public class Sommet {
 	 * @param successeurs les successeurs du sommet
 	 * @param predecesseurs les predecesseurs du sommet
 	 */
-	public Sommet (String identifiant,List<Sommet> successeurs,List<Sommet> predecesseurs  ) {
+	public Sommet (char identifiant,List<Sommet> successeurs,List<Sommet> predecesseurs  ) {
 		this.id = identifiant;
 		this.successeurs = successeurs;
 		this.predecesseurs = predecesseurs;
@@ -106,14 +106,14 @@ public class Sommet {
 	/**
 	 * @return the id
 	 */
-	public String getId() {
+	public char getId() {
 		return id;
 	}
 
 	/**
 	 * @param id the id to set
 	 */
-	public void setId(String id) {
+	public void setId(char id) {
 		this.id = id;
 	}
 

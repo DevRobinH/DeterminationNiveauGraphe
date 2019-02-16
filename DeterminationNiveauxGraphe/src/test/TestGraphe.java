@@ -96,6 +96,8 @@ public class TestGraphe {
 		      System.out.print(entree.getValue().get(i).getId() + " "); 
 		  }
 		}
+		
+	
 	}
 
 }
