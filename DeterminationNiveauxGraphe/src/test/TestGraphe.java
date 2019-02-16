@@ -19,21 +19,21 @@ public class TestGraphe {
 
 	/** Définition de jeu de jeu  */
 	public static final int MATRICE_TEST1[][] =  {{0,0,0,1,0,0,0,0},
-			{0,0,0,1,1,0,0,0},
-			{0,0,0,0,1,0,0,1},
-			{0,0,0,0,0,1,1,1},
-			{0,0,0,0,0,0,1,0},
-			{0,0,0,0,0,0,0,0},
-			{0,0,0,0,0,0,0,0},
-			{0,0,0,0,0,0,0,0}};
+												  {0,0,0,1,1,0,0,0},
+												  {0,0,0,0,1,0,0,1},
+												  {0,0,0,0,0,1,1,1},
+												  {0,0,0,0,0,0,1,0},
+												  {0,0,0,0,0,0,0,0},
+												  {0,0,0,0,0,0,0,0},
+												  {0,0,0,0,0,0,0,0}};
 
 	public static final int MATRICE_TEST2[][] =  {{0,1,0,1,0,0,0},
-			{0,0,1,0,0,0,1},
-			{0,0,0,0,0,0,1},
-			{0,0,0,0,1,1,0},
-			{0,0,0,0,0,1,0},
-			{0,0,0,0,0,0,0},
-			{0,0,0,0,0,1,0}};
+												  {0,0,1,0,0,0,1},
+												  {0,0,0,0,0,0,1},
+												  {0,0,0,0,1,1,0},
+												  {0,0,0,0,0,1,0},
+												  {0,0,0,0,0,0,0},
+												  {0,0,0,0,0,1,0}};
 
 	public static final int MATRICE_TEST3[][] =  {{0,1,1,0,0,0},
 												  {0,0,0,1,0,0},
@@ -70,37 +70,65 @@ public class TestGraphe {
 			}
 		}
 	}
+	
+	public static void testDeterminationNiveaux () {
+		// Jeux d'essai
+		ArrayList<int[][]> jeuxTest = new ArrayList<>();
+		jeuxTest.add(MATRICE_TEST1);
+		jeuxTest.add(MATRICE_TEST2);
+		jeuxTest.add(MATRICE_TEST3);
+		
+		// Lancement de la batterie de test
+		for (int i = 0; i <jeuxTest.size(); i++) {
+			System.out.println("JEUX DE TEST " + (i+1) );
+			System.out.println("Matrice d'ajacence du graphe :");
+			System.out.println(afficheMatrice(jeuxTest.get(i)));
+			HashMap<String,ArrayList<Sommet>> niveaux = new HashMap<>();
+			Graphe grapheTest = new Graphe(jeuxTest.get(i).length,jeuxTest.get(i));
+			niveaux = grapheTest.determinationNiveau();
+			
+			// Affichage du resultat
+			System.out.println("Résultat : ");
+			for (Entry<String, ArrayList<Sommet>> entree : niveaux.entrySet())
+			{
+			  System.out.print("\nNiveau : " + entree.getKey() + "\n");
+			  for(int j = 0; j < entree.getValue().size(); j++) {
+			      System.out.print(entree.getValue().get(j).getId() + " "); 
+			  }
+			}
+			System.out.println("\n\n###########################################"
+					+ "#########################################################"
+					+ "####################################\n\n");
+		}
+		
+	}
 
+	
+	/**
+	 * Affichage d'un" matrice au format [a b b b b]
+	 * @param la matrice à afficher
+	 */
+	public static String afficheMatrice (int[][] matrice) {
+	    StringBuilder formatM = new StringBuilder("[");
+	    for (int i = 0; i < matrice.length; i++) {
+	    	for(int j = 0 ; j < matrice[i].length; j++) {
+	    		formatM.append(" " +matrice[i][j] + " ");
+	    	}
+	    	formatM.append("]\n");
+	    	if (i < matrice.length - 1) {
+	    		formatM.append("[");
+	    	}
+	    }
+		return formatM.toString();
+	}
 
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
 		//testCreationGraphe();
-		HashMap<String,ArrayList<Sommet>> niveaux = new HashMap<>();
-		Graphe grapheTest = new Graphe(MATRICE_TEST3.length,MATRICE_TEST3);
-		/*for (int i = 0; i < grapheTest.getListeSommet().size(); i++){
-			System.out.println(grapheTest.getListeSommet().get(i).toString());
-		}*/
+		testDeterminationNiveaux();		
 
-		System.out.println("############################################");
-		niveaux = grapheTest.determinationNiveau();
-		System.out.println("############################################");
-		/*for (int i = 0; i < grapheTest.getListeSommet().size(); i++){
-			 System.out.println(grapheTest.getListeSommet().get(i).toString());
-		}*/
-		System.out.println("Resultat : ");
-	
-		
-		for (Entry<String, ArrayList<Sommet>> entree : niveaux.entrySet())
-		{
-		  System.out.print("\nNiveau : " + entree.getKey() + "\n");
-		  for(int i = 0; i < entree.getValue().size(); i++) {
-		      System.out.print(entree.getValue().get(i).getId() + " "); 
-		  }
-		}
-		
-	
 	}
 
 }

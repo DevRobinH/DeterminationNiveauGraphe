@@ -146,7 +146,7 @@ public class Graphe {
 				for(int j = 0; j < listeSommet.size(); j++) {
 					if (listeMarques.get(i).getId()==listeSommet.get(j).getId()) {
 						System.out.print("On supprime " + listeMarques.get(i).getId()
-								+ " de la liste des sommets");
+								+ " de la liste des sommets\n");
 						listeSommet.remove(j);
 					}
 				}
@@ -157,8 +157,9 @@ public class Graphe {
 			niveau ++;
 			listeMarques.clear();
 			System.out.println(" \n");
-			listeMarques =  marquageSommet(niveau);
-
+			if(!listeSommet.isEmpty()) {
+			    listeMarques =  marquageSommet(niveau);
+			}
 		}
 		return niveaux;
 
