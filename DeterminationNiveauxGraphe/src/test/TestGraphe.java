@@ -1,11 +1,8 @@
-/**
- *
- */
+
 package test;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 import java.util.Map.Entry;
 
 import metier.Graphe;
@@ -17,7 +14,7 @@ import metier.Sommet;
  */
 public class TestGraphe {
 
-	/** Définition de jeu de jeu  */
+	/** DÃ©finition de jeu de jeu  */
 	public static final int MATRICE_TEST1[][] =  {{0,0,0,1,0,0,0,0},
 												  {0,0,0,1,1,0,0,0},
 												  {0,0,0,0,1,0,0,1},
@@ -44,8 +41,8 @@ public class TestGraphe {
 
 
 	/**
-	 * Test de la crésation d'un graphe via le constructeur à 2 paramètres
-	 * Test de la méthode initListeSommet permmetant la tradcution
+	 * Test de la crÃ©ation d'un graphe via le constructeur Ã  2 paramÃ¨tres
+	 * Test de la mÃ©thode initListeSommet permmetant la tradcution
 	 * de la matrice d'adjacence en liste de sommet
 	 */
 	public static void testCreationGraphe() {
@@ -55,14 +52,14 @@ public class TestGraphe {
 		for(int i = 0; i < grapheTest.getListeSommet().size(); i++) {
 
 			System.out.print("\nSommet " + grapheTest.getListeSommet().get(i).getId() + " :");
-			System.out.print("\nListe de ses prédecesseurs : ");
+			System.out.print("\nListe de ses prÃ©decesseurs : ");
 
-			// Affichage des prédecesseurs du sommet courant
+			// Affichage des prÃ©decesseurs du sommet courant
 			for (int j = 0; j <  grapheTest.getListeSommet().get(i).getPredecesseurs().size(); j++) {
 				System.out.print(grapheTest.getListeSommet().get(i).getPredecesseurs().get(j).getId() + ", ");
 			}
 
-			System.out.print("\nListe de ses sucesseurs : ");
+			System.out.print("\nListe de ses successeurs : ");
 
 			// Affichage des successeurs du sommet courant
 			for (int j = 0; j < grapheTest.getListeSommet().get(i).getSuccesseurs().size(); j++) {
@@ -88,7 +85,7 @@ public class TestGraphe {
 			niveaux = grapheTest.determinationNiveau();
 			
 			// Affichage du resultat
-			System.out.println("Résultat : ");
+			System.out.println("RÃ©sultat : ");
 			for (Entry<String, ArrayList<Sommet>> entree : niveaux.entrySet())
 			{
 			  System.out.print("\nNiveau : " + entree.getKey() + "\n");
@@ -105,8 +102,8 @@ public class TestGraphe {
 
 	
 	/**
-	 * Affichage d'un" matrice au format [a b b b b]
-	 * @param la matrice à afficher
+	 * Affichage d'une matrice au format [a b b b b]
+	 * @param la matrice Ã  afficher
 	 */
 	public static String afficheMatrice (int[][] matrice) {
 	    StringBuilder formatM = new StringBuilder("[");

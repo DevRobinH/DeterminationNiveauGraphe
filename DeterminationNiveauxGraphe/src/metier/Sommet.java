@@ -1,6 +1,6 @@
 /*
  * Sommet.java                            21/01/2019
- * 3il 2nd année
+ * 3il 2nd annï¿½e
  */
 package metier;
 
@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Représentation des sommets d'un graphe
+ * ReprÃ©sentation des sommets d'un graphe
  * @author Quentin MS, Robin Henry, Florent Mamprin
  * @version 1.0
  */
@@ -22,15 +22,15 @@ public class Sommet {
 	private List<Sommet> successeurs;
 
 
-	/** Liste des prédécesseurs du sommet */
+	/** Liste des prÃ©dÃ©cesseurs du sommet */
 	private List<Sommet> predecesseurs;
 
-	/** Attribut utilisé dans l'algorithme de determination de niveau,
-	 *  à false lors de l'initialisation */
+	/** Attribut utilisÃ© dans l'algorithme de determination de niveau,
+	 *  a false lors de l'initialisation */
 	private boolean marque;
 
 	/**
-	 * Création d'un sommet
+	 * CrÃ©ation d'un sommet
 	 * @param identifiant id du sommet
 	 */
 	public Sommet (char identifiant) {
@@ -42,7 +42,7 @@ public class Sommet {
 	}
 
 	/**
-	 * Création d'un sommet en lui attribuant ses successeurs et ses predecesseurs
+	 * CrÃ©ation d'un sommet en lui attribuant ses successeurs et ses predecesseurs
 	 * @param identifiant id du sommet
 	 * @param successeurs les successeurs du sommet
 	 * @param predecesseurs les predecesseurs du sommet
@@ -56,44 +56,44 @@ public class Sommet {
 	}
 
 	/**
-	 * Ajout d'un sommet à la liste des successeurs du sommet courant
+	 * Ajout d'un sommet Ã  la liste des successeurs du sommet courant
 	 * @param successeur
 	 */
 	public void addSuccesseur (Sommet successeur) {
-		// On verifie que le sommet à ajouter ne fait pas déjà partie de la liste
+		// On verifie que le sommet Ã  ajouter ne fait pas dï¿½jï¿½ partie de la liste
 		if ((!this.successeurs.contains(successeur))) {
 			this.successeurs.add(successeur);
 		}
 	}
 
 	/**
-	 * Ajout d'un sommet à la liste des predecesseurs du sommet courant
+	 * Ajout d'un sommet Ã  la liste des predecesseurs du sommet courant
 	 * @param sucesseur
 	 */
 	public void addPredecesseur (Sommet predecesseur) {
-		// On verifie que le sommet à ajouter ne fait pas déjà partie de la liste
+		// On verifie que le sommet Ã  ajouter ne fait pas dï¿½jï¿½ partie de la liste
 		if (!(this.predecesseurs.contains(predecesseur))) {
 			this.predecesseurs.add(predecesseur);
 		}
 	}
 
 	/**
-	 * Ajout d'un sommet à la liste des successeurs du sommet courant
+	 * Ajout d'un sommet Ã  la liste des successeurs du sommet courant
 	 * @param successeur
 	 */
 	public void removeSuccesseur (Sommet successeur) {
-		// On verifie que le sommet à supprimer est dans  la liste
+		// On verifie que le sommet Ã  supprimer est dans  la liste
 		if ((this.successeurs.contains(successeur))) {
 			this.successeurs.remove(successeur);
 		}
 	}
 
 	/**
-	 * Ajout d'un sommet à la liste des predecesseurs du sommet courant
+	 * Ajout d'un sommet Ã  la liste des predecesseurs du sommet courant
 	 * @param sucesseur
 	 */
 	public void removePredecesseur (Sommet predecesseur) {
-		// On verifie que le sommet à supprimer est dans  la liste
+		// On verifie que le sommet Ã  supprimer est dans  la liste
 		for(int i = 0 ; i < this.predecesseurs.size(); i ++) {
 
 			if (predecesseur.getId() == this.predecesseurs.get(i).getId()) {
@@ -166,7 +166,7 @@ public class Sommet {
 	public String toString() {
 		StringBuilder chaine = new StringBuilder();
 		chaine.append("Id du sommet :" + this.id + "\nPredecesseur :");
-		// Affichage de tous ses prédecesseurs
+		// Affichage de tous ses prÃ©dÃ©cesseurs
 		for(int i = 0; i < this.predecesseurs.size(); i++ ) {
 			chaine.append(predecesseurs.get(i).getId());
 			if (i < predecesseurs.size()-1) {

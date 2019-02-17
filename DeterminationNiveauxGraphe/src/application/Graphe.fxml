@@ -4,7 +4,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
@@ -38,31 +38,18 @@
          <bottom>
             <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <TextField fx:id="niveauA" editable="false" layoutX="173.0" layoutY="15.0" prefHeight="25.0" prefWidth="50.0" />
-                  <TextField fx:id="niveauB" editable="false" layoutX="224.0" layoutY="15.0" prefHeight="25.0" prefWidth="50.0" />
-                  <TextField fx:id="niveauC" editable="false" layoutX="275.0" layoutY="15.0" prefHeight="25.0" prefWidth="50.0" />
-                  <Label layoutX="90.0" layoutY="15.0" style="-fx-background-color: #F4F4F4;" text=" Niveaux : " textFill="#09557c">
+                  <Label fx:id="lblNiveaux" layoutX="660.0" layoutY="22.0" style="-fx-background-color: #F4F4F4;" text=" Niveaux : " textFill="#09557c">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="niveauD" editable="false" layoutX="326.0" layoutY="15.0" prefHeight="25.0" prefWidth="50.0" />
-                  <TextField fx:id="niveauE" editable="false" layoutX="377.0" layoutY="15.0" prefHeight="25.0" prefWidth="50.0" />
-                  <TextField fx:id="niveauF" editable="false" layoutX="428.0" layoutY="15.0" prefHeight="25.0" prefWidth="50.0" />
-                  <TextField fx:id="niveauG" editable="false" layoutX="479.0" layoutY="15.0" prefHeight="25.0" prefWidth="50.0" />
-                  <TextField fx:id="niveauH" editable="false" layoutX="530.0" layoutY="15.0" prefHeight="25.0" prefWidth="50.0" />
-                  <TextField fx:id="niveauI" editable="false" layoutX="581.0" layoutY="15.0" prefHeight="25.0" prefWidth="50.0" />
-                  <TextField fx:id="niveauJ" editable="false" layoutX="632.0" layoutY="15.0" prefHeight="25.0" prefWidth="50.0">
+                  <TextArea fx:id="zoneNiveau" editable="false" layoutX="744.0" layoutY="11.0" prefHeight="161.0" prefWidth="200.0">
                      <font>
-                        <Font name="System Bold" size="12.0" />
+                        <Font size="13.0" />
                      </font>
-                  </TextField>
-                  <TextField fx:id="niveauK" editable="false" layoutX="683.0" layoutY="15.0" prefHeight="25.0" prefWidth="50.0" />
-                  <TextField fx:id="niveauO" editable="false" layoutX="887.0" layoutY="15.0" prefHeight="25.0" prefWidth="50.0" />
-                  <TextField fx:id="niveauM" editable="false" layoutX="785.0" layoutY="15.0" prefHeight="25.0" prefWidth="50.0" />
-                  <TextField fx:id="niveauN" editable="false" layoutX="836.0" layoutY="15.0" prefHeight="25.0" prefWidth="50.0" />
-                  <TextField fx:id="niveauL" editable="false" layoutX="734.0" layoutY="15.0" prefHeight="25.0" prefWidth="50.0" />
-                  <Label layoutX="314.0" layoutY="88.0" style="-fx-background-color: #F4F4F4;" text=" Niveaux : " textFill="#d4e7ee">
+                  </TextArea>
+                  <TextArea fx:id="console" layoutX="152.0" layoutY="13.0" prefHeight="160.0" prefWidth="437.0" />
+                  <Label fx:id="lblDetail" layoutX="87.0" layoutY="22.0" style="-fx-background-color: #F4F4F4;" text="Détail :" textFill="#09557c">
                      <font>
                         <Font size="16.0" />
                      </font>

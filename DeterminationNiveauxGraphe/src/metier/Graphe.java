@@ -1,6 +1,6 @@
 /*
  * Graphe.java                            21/01/2019
- * 3il 2nd année
+ * 3il 2nd annÃ©e
  */
 package metier;
 
@@ -9,9 +9,9 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * Représentation de graphe orienté
- * Implémentation de la fonctionnalité permettant de determiner
- * les différents niveaux du graphe
+ * ReprÃ©sentation de graphe orientï¿½
+ * ImplÃ©mentation de la fonctionnalitÃ© permettant de dÃ©terminer
+ * les diffÃ©rents niveaux du graphe
  * @author Quentin MS, Robin Henry, Florent Mamprin
  * @version 1.0
  */
@@ -27,15 +27,15 @@ public class Graphe {
 	private List<Sommet> listeSommet;
 
 	/**
-	 * Implémentation d'un graphe en ne définissant que son nombre de soomet
-	 * Les arêtes ne sont pas définis
+	 * ImplÃ©mentation d'un graphe en ne dÃ©finissant que son nombre de sommets
+	 * Les arÃªtes ne sont pas dÃ©finis
 	 * @param nbsommet nombre de sommet composant le graphe
-	 * @throws IllegalArgumentException nombre de sommet négatif ou null
+	 * @throws IllegalArgumentException nombre de sommet nÃ©gatif ou null
 	 */
 	public Graphe (int nbSommet) {
-		// vérification du nombre de sommet passé en paramètre
+		// vÃ©rification du nombre de sommet passÃ© en paramÃ¨tre
 		if (nbSommet <= 0 ) {
-			throw new IllegalArgumentException("Le graphe doit posséder au moins 1 sommet");
+			throw new IllegalArgumentException("Le graphe doit possÃ©der au moins 1 sommet");
 		}
 		this.sommet = nbSommet;
 
@@ -46,15 +46,15 @@ public class Graphe {
 	}
 
 	/**
-	 * Implémentation d'un graphe en définissant ses sommets
-	 * ainsi que ses arêtes
+	 * ImplÃ©mentation d'un graphe en dÃ©finissant ses sommets
+	 * ainsi que ses arÃªtes
 	 * @param nbSommet nombre de sommet composant le graphe
-	 * @param matrice  matrice d'ajacence permettant de connaitre comment sont liés les sommets
+	 * @param matrice  matrice d'ajacence permettant de connaitre comment sont liÃ©s les sommets
 	 */
 	public Graphe (int nbSommet, int matrice[][]) {
-		// vérification du nombre de sommet passé en paramètre
+		// vÃ©rification du nombre de sommet passÃ© en paramÃ¨tre
 		if (nbSommet <= 0 ) {
-			throw new IllegalArgumentException("Le graphe doit posséder au moins 1 sommet");
+			throw new IllegalArgumentException("Le graphe doit possÃ©der au moins 1 sommet");
 		}
 		this.sommet = nbSommet;
 
@@ -68,16 +68,16 @@ public class Graphe {
 
 	/**
 	 * Lecture de la matrice d'adjacence
-	 * Et traduction en liste de sommet avec leur arêtes
+	 * Et traduction en liste de sommet avec leur arÃªtes
 	 * @param matrice Matrice d'adjacence du graphe
 	 * @return la liste des sommets du graphe
 	 */
 	public ArrayList<Sommet> initListeSommet (int matrice[][]) {
 		ArrayList<Sommet> sommets = new ArrayList<>();
-		// Détermination des successeurs et des predecesseur de chaque sommet
+		// DÃ©termination des successeurs et des predecesseur de chaque sommet
 		// Parcours des lignes
 		for (int i = 0; i < matrice.length; i++) {
-			// parcours des éléments de la ligne afin de déterminer les successeurs
+			// parcours des Ã©lÃ©ments de la ligne afin de dÃ©terminer les successeurs
 			sommets.add(new Sommet((char)(i+65)));
 			for (int j = 0; j < matrice[i].length; j++) {
 				// s'il y a un 1 dans la matrice
@@ -85,7 +85,7 @@ public class Graphe {
 					sommets.get(i).addSuccesseur(new Sommet((char)(j+65)));
 				}
 			}
-			// parcours des colonnes afin de déterminer les prédecesseurs
+			// parcours des colonnes afin de dÃ©terminer les prÃ©dÃ©cesseurs
 			for (int k = 0; k < matrice.length; k++) {
 				if (matrice[k][i] == 1) {
 					sommets.get(i).addPredecesseur(new Sommet((char)(k+65)));
@@ -98,27 +98,27 @@ public class Graphe {
 
 
 	/**
-	 * Détermination des différents niveaux d'un graphe orientée
+	 * DÃ©termination des diffÃ©rents niveaux d'un graphe orientï¿½e
 	 */
 	public HashMap<String,ArrayList<Sommet>> determinationNiveau () {
 		//niveau du graphe
 		int niveau = 0;
-		// liste de sommet marqués
+		// liste de sommet marquÃ©s
 		ArrayList<Sommet> listeMarques =  new ArrayList<Sommet>();
-		// Map avec pour clé le niveau 
+		// Map avec pour clÃ© le niveau 
 		// Et pour valeur la liste de sommet correspondant au niveau
 		// A retourner
 		HashMap<String,ArrayList<Sommet>> niveaux = new HashMap<>();
 
-		// Marquage des sommets sans prédecesseurs
+		// Marquage des sommets sans prÃ©decesseurs
 		listeMarques =  marquageSommet(niveau);
 
 		while (!listeSommet.isEmpty()) {
-			// pour chaque sommet marqué 
+			// pour chaque sommet marquÃ© 
 			for(int i = 0; i < listeMarques.size(); i++) {
 				//affichage de son id 
 				System.out.println("On recherche " + listeMarques.get(i).getId() 
-						+ " dans la liste des prédécesseurs de chaque sommet\n");
+						+ " dans la liste des predecesseurs de chaque sommet\n");
 
 				// on parcourt la liste des sommets du graphe
 				for(int j = 0; j < listeSommet.size(); j++) {
@@ -126,13 +126,13 @@ public class Graphe {
 					//System.out.print("Sommet : " + listeSommet.get(j).getId() + "  \n");
 					System.out.print(listeSommet.get(j).toString());
 					//System.out.print("Ses predecesseurs : ");
-					// on parcourt les prédecesseurs de chaque sommet
+					// on parcourt les prÃ©decesseurs de chaque sommet
 					for(int k = 0; k < listeSommet.get(j).getPredecesseurs().size(); k++) {
 						// affichage de l'id des predecesseurs 
 						//	System.out.print(listeSommet.get(j).getPredecesseurs().get(k).getId() + " ");
 
-						// on supprime le predecesseur s'il possede le même
-						// id que le sommet marqué
+						// on supprime le predecesseur s'il possede le mÃªme
+						// id que le sommet marquÃ©
 						if(listeMarques.get(i).getId() == listeSommet.get(j).getPredecesseurs().get(k).getId()) {
 							System.out.print("*On effectue la suppression\n");
 							listeSommet.get(j).getPredecesseurs().remove(k);
@@ -142,7 +142,7 @@ public class Graphe {
 				}
 			}
 			for (int i = 0; i < listeMarques.size(); i++ ) {
-				// on enlève de la liste des sommets le sommet ancinnement marqué
+				// on enlÃ¨ve de la liste des sommets le sommet ancinnement marquÃ©
 				for(int j = 0; j < listeSommet.size(); j++) {
 					if (listeMarques.get(i).getId()==listeSommet.get(j).getId()) {
 						System.out.print("On supprime " + listeMarques.get(i).getId()
@@ -166,21 +166,21 @@ public class Graphe {
 	}
 
 	/**
-	 * Marquage des sommet ne possédant pas de prédecesseurs
-	 * @param niveau niveau de décomposition du graphe
-	 * @return liste de sommet marqué
+	 * Marquage des sommet ne possÃ©dant pas de prÃ©decesseurs
+	 * @param niveau niveau de dÃ©composition du graphe
+	 * @return liste de sommet marquÃ©
 	 */
 	private ArrayList<Sommet> marquageSommet(int niveau) {
 		ArrayList<Sommet> marques = new ArrayList<Sommet>();
 		System.out.print("Niveau " +  niveau + " : ");
-		// Accéder à la liste de sommet
+		// AccÃ©der Ã  la liste de sommet
 		for(int i = 0; i < listeSommet.size(); i++) {
-			// Affiche les sommets sans prédécesseurs
+			// Affiche les sommets sans prÃ©dÃ©cesseurs
 			if (listeSommet.get(i).getPredecesseurs().isEmpty()) {
 				System.out.print(listeSommet.get(i).getId()+ "  ");
 				// on marque le sommet
 				listeSommet.get(i).setMarque(true);
-				// insertion du sommet marqué à la liste
+				// insertion du sommet marquÃ© Ã  la liste
 				marques.add(listeSommet.get(i));
 			}
 		}
